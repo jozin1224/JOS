@@ -9,3 +9,4 @@ nasm -fbin Bootloader/boot.asm -o Bin/boot.bin
 cat Bin/boot.bin Bin/kernel.bin > Bin/os_image.img
 
 qemu-system-i386 -fda Bin/os_image.img -smp 2 -m 3G
+
