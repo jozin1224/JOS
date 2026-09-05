@@ -6,7 +6,7 @@ ld -m elf_i386 -T linker.ld Bin/kernel_entry.o Bin/kernel.o -o Bin/kernel.bin
 
 nasm -fbin Bootloader/boot.asm -o Bin/boot.bin
 
-cat Bin/boot.bin Bin/kernel.bin > Bin/os_image.img
+cat Bin/boot.bin Bin/kernel.bin > JOS.img
 
-qemu-system-i386 -fda Bin/os_image.img -smp 2 -m 3G
+qemu-system-i386 -fda JOS.img -smp 2 -m 3G
 
