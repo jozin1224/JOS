@@ -1,9 +1,6 @@
-#!/usr/bin/env bash
-
-# Exit immediately if a command exits with a non-zero status
 set -e
 
-# Ensure the script is run as root or with sudo privileges
+
 if [ "$EUID" -ne 0 ]; then
   echo "Please run as root or with sudo."
   exit 1
