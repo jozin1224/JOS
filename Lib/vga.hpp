@@ -1,5 +1,5 @@
 // Copyright (c) 2026 jozin1224
-#include "../include/stdint.h"
+#include "../Include/cstdint.h"
 int Lines = -1;
 static int cursor_row = 0;
 static int cursor_col = 0;
@@ -12,6 +12,19 @@ namespace Vga
             cursor_col = 0;
             cursor_row++;
             Lines++;
+        } else if (c == '\b') {
+            if (cursor_col > 0) {
+                cursor_col--;
+                int index = (cursor_row * 80 + cursor_col) * 2;
+                video_memory[index] = ' ';
+                video_memory[index + 1] = color;
+            } else if (cursor_row > 0) {
+                cursor_row--;
+                cursor_col = 79;
+                int index = (cursor_row * 80 + cursor_col) * 2;
+                video_memory[index] = ' ';
+                video_memory[index + 1] = color;
+            }
         } else {
             int index = (cursor_row * 80 + cursor_col) * 2;
             video_memory[index] = c;
@@ -59,5 +72,4 @@ namespace Vga
         cursor_row = 0;
         cursor_col = 0;
     }
-
 }
