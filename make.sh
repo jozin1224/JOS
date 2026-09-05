@@ -1,6 +1,11 @@
 unset GTK_PATH
 
-# This code compile the OS
+nasm -f elf32 Kernel/kernel_entry.asm -o Bin/kernel_entry.o
+g++ -m32 -ffreestanding -fno-pie -fno-exceptions -fno-rtti -c Kernel/kernel.cpp -o Bin/kernel.o
+ld -m elf_i386 -T linker.ld Bin/kernel_entry.o Bin/kernel.o -o Bin/kernel.bin
 
-nasm -fbin Bootloader/boot.asm -o Bin/boot.img #compile Boot
-qemu-system-i386 -fda Bin/boot.img -smp 2 -m 3G # This is my old vostro 1320 specs
+nasm -fbin Bootloader/boot.asm -o Bin/boot.bin
+
+cat Bin/boot.bin Bin/kernel.bin > Bin/os_image.img
+
+qemu-system-i386 -fda Bin/os_image.img -smp 2 -m 3G
