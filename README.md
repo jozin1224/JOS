@@ -9,5 +9,12 @@ This project use MIT license
 # 🖥️ Main OS
 Nope
 
+# 🧔‍♀️ Users
+
+Username: root
+Password: portal
+Username: randomuser
+Password: just press enter to logon
+
 # 🍞 Bread
 Bread.

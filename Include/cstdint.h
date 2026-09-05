@@ -1,13 +1,14 @@
 // Copyright (c) 2026 jozin1224
 
 
+
 #ifndef _GLIBCXX_CSTDINT
 #define _GLIBCXX_CSTDINT
 #define NULL ((void*)0)
 #define TRUE 1 
 #define FALSE 0
 
-// Yes C++ have bool in bare metal
+
 
 namespace std {
 typedef __INT8_TYPE__      int8_t;
@@ -38,8 +39,8 @@ typedef __INTPTR_TYPE__    intptr_t;
 typedef __UINTPTR_TYPE__   uintptr_t;
 typedef __INTMAX_TYPE__    intmax_t;
 typedef __UINTMAX_TYPE__   uintmax_t;
-
-} // namespace std
+    typedef unsigned long size_t;
+} 
 using std::int8_t;
 using std::int16_t;
 using std::int32_t;
@@ -50,4 +51,5 @@ using std::uint32_t;
 using std::uint64_t;
 using std::uintptr_t;
 using std::intptr_t;
+using std::size_t;
 #endif
