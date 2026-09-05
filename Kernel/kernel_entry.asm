@@ -1,3 +1,4 @@
+;Copyright (c) 2026 jozin1224
 [bits 16]
 section .boot
 

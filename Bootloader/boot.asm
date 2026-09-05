@@ -1,3 +1,4 @@
+;Copyright (c) 2026 jozin1224
 [BITS 16]
 [ORG 0X7C00]
 

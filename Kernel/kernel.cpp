@@ -1,3 +1,6 @@
+// Copyright (c) 2026 jozin1224
+
+
 #include "../Lib/vga.hpp"
 #include "../Drivers/keyboard.h"
 
@@ -38,7 +41,8 @@ extern "C" void kernel_main() {
                     
                 } 
                 else if (compare_string(input_buffer, "fastfetch")) {
-                    Vga::DrawText("\nJOS 1.0\nCreated by jozin1224");
+
+                    Vga::DrawText("\nJOS 1.0\nCopyright (c) 2026 jozin1224\n JOS is a template for others OS");
                     
                 } 
                 else if (buffer_index > 0) {
