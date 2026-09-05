@@ -1,6 +1,6 @@
 // VGA.hpp
 #include "../include/stdint.h"
-
+int Lines = -1;
 static int cursor_row = 0;
 static int cursor_col = 0;
 char* video_memory = (char*)0xB8000;
@@ -11,6 +11,7 @@ namespace Vga
         if (c == '\n') {
             cursor_col = 0;
             cursor_row++;
+            Lines++;
         } else {
             int index = (cursor_row * 80 + cursor_col) * 2;
             video_memory[index] = c;
