@@ -1,4 +1,5 @@
 ;Copyright (c) 2026 jozin1224
+;Boot
 [BITS 16]
 [ORG 0X7C00]
 

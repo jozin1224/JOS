@@ -1,4 +1,5 @@
 ;Copyright (c) 2026 jozin1224
+;Kernel Entry
 [bits 16]
 section .boot
 
