@@ -18,7 +18,8 @@ bool compare_string(const char* str1, const char* str2) {
 
 extern "C" void kernel_main() {
     Vga::Clean();
-    Vga::DrawTextEx("\n/Dev/sda> ", 0x0A);
+    Vga::DrawText("[OK] Kernel Loaded!!!\n");
+    Vga::DrawTextEx("/Dev/sda> ", 0x0A);
     char input_buffer[BUFFER_SIZE];
     int buffer_index = 0;
 
