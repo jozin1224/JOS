@@ -148,7 +148,7 @@ extern "C" void kernel_main() {
             {
                 input_buffer[buffer_index] = '\0';
                 if (compare_string(input_buffer, "help")) {
-                    Vga::DrawText("\nCommands: help, clear, fastfetch");
+                    Vga::DrawText("\nCommands: help, clear, fastfetch, rootcommand, info");
                 }
                 else if (compare_string(input_buffer, "rootcommand"))
                 {
@@ -169,7 +169,7 @@ extern "C" void kernel_main() {
                     Reboot();
                     while(1);
                 }  
-                else if (compare_string(input_buffer, "fastfetch")) {
+                else if (compare_string(input_buffer, "info")) {
                     Vga::DrawText("\nJOS 1.0\nCopyright (c) 2026 jozin1224\n JOS is a template for others OS");
                 } 
                 else if (buffer_index > 0) {

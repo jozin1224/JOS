@@ -6,11 +6,8 @@
 #define KBD_DATA_PORT 0x60
 #define KBD_STATUS_PORT 0x64
 
-static inline unsigned char inb(unsigned short port) {
-    unsigned char ret;
-    asm volatile ("inb %1, %0" : "=a"(ret) : "Nd"(port));
-    return ret;
-}
+
+#include "io.h"
 
 static const char kbd_map[128] = {
     0,  27, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', '\b',
