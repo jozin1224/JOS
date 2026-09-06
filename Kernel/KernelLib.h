@@ -7,7 +7,7 @@
 User user_database[MAX_USERS];
 int total_users = 0;
 
-void Reboot() {
+void Reboot() { // Reboot
     __asm__ __volatile__ (
         "outb %0, %1" 
         : 
