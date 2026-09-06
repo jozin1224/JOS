@@ -1,13 +1,14 @@
 // Copyright (c) 2026 jozin1224
 
 #include "KernelLib.h"
-
-
+#include "../Lib/time.h"
 
 extern "C" void kernel_main() {
     create_user(0, "root", "portal", true);
     create_user(1, "randomuser", "", false);   
     Vga::Clean();
+    BiosTime Time = get_bios_time();
+    Vga::DrawText("Welcome to JOS 1.0\n");
     Vga::DrawText("[OK] Kernel Loaded!!!\n");
     LoginState login_state = GET_USERNAME;
     char user_buffer[32] = {0};
@@ -95,6 +96,7 @@ extern "C" void kernel_main() {
             }
         }
     }
+    srand(Xor(And(Time.day, Time.year), Or(Time.month, Time.second)));
     Vga::DrawText("\n");
     Vga::DrawTextEx(logged_user->getUsername(), 0x0A);
     Vga::DrawTextEx("@JOS# ", 0x0A);
@@ -109,7 +111,7 @@ extern "C" void kernel_main() {
             {
                 input_buffer[buffer_index] = '\0';
                 if (compare_string(input_buffer, "help")) {
-                    Vga::DrawText("\nCommands: help, clear, fastfetch, rootcommand, info");
+                    Vga::DrawText("\nCommands: help, clear, rootcommand, info, randoutb");
                 }
                 else if (compare_string(input_buffer, "rootcommand"))
                 {
@@ -124,6 +126,35 @@ extern "C" void kernel_main() {
                 } 
                 else if (compare_string(input_buffer, "clear")) {
                     Vga::Clean();
+                }
+                else if (compare_string(input_buffer, "date")) {
+                    char buffer[12];
+                    Vga::WriteChar('\n', 0x07);
+                    int_to_string(Time.month, buffer, 12);
+                    Vga::DrawText(buffer);
+                    Vga::WriteChar(':', 0x07);
+                    int_to_string(Time.day, buffer, 12);
+                    Vga::DrawText(buffer);
+                    Vga::WriteChar(':', 0x07);
+                    int_to_string(Time.year, buffer, 12);
+                    Vga::DrawText(buffer);
+                }
+                else if (compare_string(input_buffer, "randoutb")) {
+                    int a = 0;
+                    int b = 0;
+                    while(1)
+                    {
+                        outb(a, b);
+                        if (RandomBool()) // ?????
+                        {
+                            a++;
+                        }
+                        else
+                        {
+                            b++;
+                        }
+                        Sleep(500);
+                    }
                 }
                 else if (compare_string(input_buffer, "reboot")) {
                     Vga::DrawText("[KERNEL] Reboot");

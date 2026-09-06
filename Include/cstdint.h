@@ -39,7 +39,8 @@ typedef __INTPTR_TYPE__    intptr_t;
 typedef __UINTPTR_TYPE__   uintptr_t;
 typedef __INTMAX_TYPE__    intmax_t;
 typedef __UINTMAX_TYPE__   uintmax_t;
-    typedef unsigned long size_t;
+typedef unsigned long size_t;
+typedef unsigned long DWORD;
 } 
 using std::int8_t;
 using std::int16_t;
@@ -52,4 +53,5 @@ using std::uint64_t;
 using std::uintptr_t;
 using std::intptr_t;
 using std::size_t;
+using std::DWORD;
 #endif
