@@ -15,6 +15,8 @@ Username: root
 Password: portal  
 Username: randomuser  
 Password: just press enter to logon  
+Username: adrian shephard  
+Password: 123123  
 
 # 🍞 Bread
 Bread.

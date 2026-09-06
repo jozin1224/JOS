@@ -5,7 +5,8 @@
 
 extern "C" void kernel_main() {
     create_user(0, "root", "portal", true);
-    create_user(1, "randomuser", "", false);   
+    create_user(1, "randomuser", "", false);
+    create_user(2, "adrian shephard", "123123", true); 
     Vga::Clean();
     BiosTime Time = get_bios_time();
     Vga::DrawText("Welcome to JOS 1.0\n");
@@ -130,9 +131,17 @@ extern "C" void kernel_main() {
                 else if (compare_string(input_buffer, "date")) {
                     char buffer[12];
                     Vga::WriteChar('\n', 0x07);
+                    if (Time.month < 10)
+                    {
+                        Vga::DrawText("0");
+                    }
                     int_to_string(Time.month, buffer, 12);
                     Vga::DrawText(buffer);
                     Vga::WriteChar(':', 0x07);
+                    if (Time.day < 10)
+                    {
+                        Vga::DrawText("0");
+                    }
                     int_to_string(Time.day, buffer, 12);
                     Vga::DrawText(buffer);
                     Vga::WriteChar(':', 0x07);
