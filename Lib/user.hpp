@@ -1,7 +1,6 @@
 // Copyright (c) 2026 jozin1224
 #ifndef _CXXKERNEL_USER_HPP
 #define _CXXKERNEL_USER_HPP
-#define USER_ROOT_ID 0x00
 #include "../Include/cstdint.h"
 enum LoginState { GET_USERNAME, GET_PASSWORD, SUCCESS };
 

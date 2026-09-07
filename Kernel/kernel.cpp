@@ -2,7 +2,6 @@
 
 #include "KernelLib.h"
 #include "../Lib/time.h"
-
 extern "C" void kernel_main() {
     create_user(0, "root", "portal", true);
     create_user(1, "randomuser", "", false);
@@ -11,12 +10,8 @@ extern "C" void kernel_main() {
     BiosTime Time = get_bios_time();
     Vga::DrawText("Welcome to JOS 1.0\n");
     Vga::DrawText("[OK] Kernel Loaded!!!\n");
-    LoginState login_state = GET_USERNAME;
-    char user_buffer[32] = {0};
-    char pass_buffer[32] = {0};
-    int login_index = 0;
-    User* logged_user = nullptr; 
-    Vga::DrawText("\nUser: ");
+    LoginScreen();
+
     while (login_state != SUCCESS) 
     {
         const char Key = get_pressed_key();
@@ -169,7 +164,11 @@ extern "C" void kernel_main() {
                     Vga::DrawText("[KERNEL] Reboot");
                     Reboot();
                     while(1);
-                }  
+                } 
+                else if (compare_string(input_buffer, "logff")) {
+                    Vga::Clean();
+                    LoginScreen();
+                }   
                 else if (compare_string(input_buffer, "info")) {
                     Vga::DrawText("\nJOS 1.0\nCopyright (c) 2026 jozin1224\n JOS is a template for others OS");
                 } 
