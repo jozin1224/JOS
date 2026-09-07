@@ -42,7 +42,7 @@ VOID LoginScreen(void)
                 else if (login_state == GET_PASSWORD) 
                 {
                     pass_buffer[login_index] = '\0';
-                    bool login_valido = false;
+                    bool valid_logon = false;
                     for (int u = 0; u < total_users; u++) 
                     {
                         bool user_ok = true;
@@ -54,12 +54,12 @@ VOID LoginScreen(void)
                         }
                         if (user_ok && user_database[u].verifyPassword(pass_buffer)) 
                         {
-                            login_valido = true;
+                            valid_logon = true;
                             logged_user = &user_database[u]; 
                             break; 
                         }
                     }
-                    if (login_valido) 
+                    if (valid_logon) 
                     {
                         Vga::DrawTextEx("\n[OK] Sucess\n", 0x0A);
                         if (logged_user->checkAdmin()) {
