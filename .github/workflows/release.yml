@@ -1,0 +1,26 @@
+name: Auto Upload
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Criar o Release no GitHub
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            JOS.img
+            JOS.iso
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
