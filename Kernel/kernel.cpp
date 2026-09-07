@@ -107,7 +107,7 @@ extern "C" void kernel_main() {
             {
                 input_buffer[buffer_index] = '\0';
                 if (compare_string(input_buffer, "help")) {
-                    Vga::DrawText("\nCommands: help, clear, rootcommand, info, randoutb");
+                    Vga::DrawText("\nCommands: help, clear, rootcommand, info, randoutb, logoff, date");
                 }
                 else if (compare_string(input_buffer, "rootcommand"))
                 {
@@ -165,7 +165,7 @@ extern "C" void kernel_main() {
                     Reboot();
                     while(1);
                 } 
-                else if (compare_string(input_buffer, "logff")) {
+                else if (compare_string(input_buffer, "logoff")) {
                     Vga::Clean();
                     LoginScreen();
                 }   
